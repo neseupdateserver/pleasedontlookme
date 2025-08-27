@@ -22,7 +22,7 @@ fetch('https://api.ipify.org?format=json')
   })
   .catch(err => {
     console.error(err);
-    document.getElementById('ip').textContent = 'IP alınamadı.';
+    document.getElementById('ip').textContent = 'Failed to initalize';
   });
 </script>
 </body>
